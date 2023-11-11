@@ -32,11 +32,13 @@ void modelobj_normal_smooth(Modelobj* model) {
 		ModelobjFace* f = &model->fs[fid];
 		for (size_t j = 0; j < 3; j += 1) {
 			int32_t vid = f->vids[j];
+			int32_t nid = f->nids[j];
 			glm_vec3_add(
-				model->ns[vid],
+				model->ns[nid],
 				new_ns[vid],
 				new_ns[vid]
 			);
+			f->nids[j] = vid; // update normal index
 			count[vid] += 1;
 		}
 	}
@@ -47,8 +49,7 @@ void modelobj_normal_smooth(Modelobj* model) {
 				printf("skip: vid %lu connects <3 faces\n",
 					vid);
 			}
-			glm_vec3_scale(
-				new_ns[vid], 1.0f / (float)c, new_ns[vid]);
+			glm_vec3_normalize(new_ns[vid]);
 		}
 	}
 	free(count);
