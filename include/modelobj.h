@@ -1,5 +1,5 @@
-#ifndef _MODELOBJ_MODELOBJH
-#define _MODELOBJ_MODELOBJH
+#ifndef INCLUDEGUARD_MODELOBJ_MODELOBJH
+#define INCLUDEGUARD_MODELOBJ_MODELOBJH
 
 #include <stdio.h>
 #include <stdint.h>

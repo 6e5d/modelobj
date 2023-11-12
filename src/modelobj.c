@@ -50,22 +50,22 @@ void modelobj_dump(FILE* fp, Modelobj* model) {
 	size_t i;
 	for (i = 0; i < model->v_len; i += 1) {
 		fprintf(fp, "v %f %f %f\n",
-			model->vs[i][0],
-			model->vs[i][1],
-			model->vs[i][2]
+			(double)model->vs[i][0],
+			(double)model->vs[i][1],
+			(double)model->vs[i][2]
 		);
 	}
 	for (i = 0; i < model->u_len; i += 1) {
 		fprintf(fp, "vt %f %f\n",
-			model->us[i][0],
-			model->us[i][1]
+			(double)model->us[i][0],
+			(double)model->us[i][1]
 		);
 	}
 	for (i = 0; i < model->n_len; i += 1) {
 		fprintf(fp, "vn %f %f %f\n",
-			model->ns[i][0],
-			model->ns[i][1],
-			model->ns[i][2]
+			(double)model->ns[i][0],
+			(double)model->ns[i][1],
+			(double)model->ns[i][2]
 		);
 	}
 	for (i = 0; i < model->f_len; i += 1) {
