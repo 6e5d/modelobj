@@ -1,5 +1,5 @@
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #include "../../vector/include/vector.h"
 #include "../include/modelobj.h"

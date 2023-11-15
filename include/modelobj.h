@@ -1,9 +1,9 @@
 #ifndef INCLUDEGUARD_MODELOBJ_MODELOBJH
 #define INCLUDEGUARD_MODELOBJ_MODELOBJH
 
-#include <stdio.h>
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
 
 typedef struct {
 	float color[4];

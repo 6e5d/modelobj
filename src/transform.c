@@ -1,5 +1,5 @@
-#include <math.h>
 #include <cglm/cglm.h>
+#include <math.h>
 
 #include "../include/modelobj.h"
 #include "../include/transform.h"

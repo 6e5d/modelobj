@@ -1,7 +1,7 @@
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include <cglm/cglm.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include "../include/modelobj.h"
 #include "../include/normal.h"
