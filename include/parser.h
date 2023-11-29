@@ -1,3 +1,6 @@
+#ifndef INCLUDEGUARD_MODELOBJ_PARSERH
+#define INCLUDEGUARD_MODELOBJ_PARSERH
+
 #include <stddef.h>
 #include <stdint.h>
 
@@ -29,3 +32,5 @@ void parser_init(ParserState* state);
 void parser_deinit(ParserState* state);
 void parse_step(ParserState *state, char* line);
 void build_model(Modelobj* model, ParserState* state);
+
+#endif
