@@ -1,34 +1,11 @@
-#include <assert.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "../../wholefile/include/wholefile.h"
 #include "../include/modelobj.h"
-#include "../include/parser.h"
 
 void modelobj_load_file(Modelobj* model, char* path) {
 	uint8_t *buf;
 	assert(0 != wholefile_read(path, &buf));
 	modelobj_load(model, (char *)buf);
 	free(buf);
-}
-
-void modelobj_load(Modelobj* model, char* buf) {
-	ParserState parser;
-	parser_init(&parser);
-	char *saveptr;
-	while(1) {
-		char* p = strtok_r(buf, "\n", &saveptr);
-		if (NULL == p) {
-			break;
-		}
-		buf = NULL;
-		parse_step(&parser, p);
-	}
-	build_model(model, &parser);
 }
 
 void modelobj_deinit(Modelobj* model) {
@@ -45,11 +22,11 @@ static void chk(int v) {
 }
 
 void modelobj_debug_print(Modelobj* model) {
-	chk(fprintf(stderr, "v:%zu u:%zu n:%zu f:%zu\n",
+	fprintf(stderr, "v:%zu u:%zu n:%zu f:%zu\n",
 		model->v_len,
 		model->u_len,
 		model->n_len,
-		model->f_len));
+		model->f_len);
 }
 
 void modelobj_dump(FILE* fp, Modelobj* model) {

@@ -2,7 +2,6 @@
 #include <math.h>
 
 #include "../include/modelobj.h"
-#include "../include/transform.h"
 
 void modelobj_transform(Modelobj* model, mat3 t) {
 	for (size_t vid = 0; vid < model->v_len; vid += 1) {

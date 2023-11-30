@@ -1,10 +1,7 @@
 #include <cglm/cglm.h>
 #include <math.h>
-#include <stdint.h>
-#include <stdlib.h>
 
 #include "../include/modelobj.h"
-#include "../include/normal.h"
 
 void modelobj_normal_build(Modelobj* model) {
 	// for face-normal the number of normal = number of faces
