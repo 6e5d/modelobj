@@ -1,9 +1,9 @@
-#include "../../wholefile/include/wholefile.h"
+#include "../../wholefile/build/wholefile.h"
 #include "../include/modelobj.h"
 
 void modelobj_load_file(Modelobj* model, char* path) {
 	uint8_t *buf;
-	assert(0 != wholefile_read(path, &buf));
+	assert(0 != com_6e5d_wholefile_read(path, &buf));
 	modelobj_load(model, (char *)buf);
 	free(buf);
 }
