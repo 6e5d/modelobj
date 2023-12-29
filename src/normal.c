@@ -3,16 +3,16 @@
 
 #include "../include/modelobj.h"
 
-void modelobj_normal_build(Modelobj* model) {
+void modelobj(normal_build)(Modelobj()* model) {
 	// for face-normal the number of normal = number of faces
 	model->ns = realloc(model->ns, sizeof(float[3]) * model->f_len);
 	model->n_len = model->f_len;
 	for (size_t fid = 0; fid < model->f_len; fid += 1) {
-		ModelobjFace* f = &model->fs[fid];
+		Modelobj(Face)* f = &model->fs[fid];
 		float* v1 = model->vs[f->vids[0]];
 		float* v2 = model->vs[f->vids[1]];
 		float* v3 = model->vs[f->vids[2]];
-		vec3 va, vb;
+		CglmVec3 va, vb;
 		glm_vec3_sub(v2, v1, va);
 		glm_vec3_sub(v3, v1, vb);
 		glm_vec3_crossn(va, vb, model->ns[fid]);
@@ -22,11 +22,11 @@ void modelobj_normal_build(Modelobj* model) {
 	}
 }
 
-void modelobj_normal_smooth(Modelobj* model) {
+void modelobj(normal_smooth)(Modelobj()* model) {
 	float (*new_ns)[3] = calloc(model->v_len, sizeof(float[3]));
 	uint32_t *count = calloc(model->v_len, sizeof(uint32_t));
 	for (size_t fid = 0; fid < model->f_len; fid += 1) {
-		ModelobjFace* f = &model->fs[fid];
+		Modelobj(Face)* f = &model->fs[fid];
 		for (size_t j = 0; j < 3; j += 1) {
 			int32_t vid = f->vids[j];
 			int32_t nid = f->nids[j];
@@ -35,7 +35,8 @@ void modelobj_normal_smooth(Modelobj* model) {
 				new_ns[vid],
 				new_ns[vid]
 			);
-			f->nids[j] = vid; // update normal index
+			// update normal index
+			f->nids[j] = vid;
 			count[vid] += 1;
 		}
 	}

@@ -1,14 +1,14 @@
 #include "../../wholefile/build/wholefile.h"
 #include "../include/modelobj.h"
 
-void modelobj_load_file(Modelobj* model, char* path) {
+void modelobj(load_file)(Modelobj()* model, char* path) {
 	uint8_t *buf;
 	assert(0 != com_6e5d_wholefile_read(path, &buf));
-	modelobj_load(model, (char *)buf);
+	modelobj(load)(model, (char *)buf);
 	free(buf);
 }
 
-void modelobj_deinit(Modelobj* model) {
+void modelobj(deinit)(Modelobj()* model) {
 	free(model->vs);
 	free(model->us);
 	free(model->ns);
@@ -21,7 +21,7 @@ static void chk(int v) {
 	}
 }
 
-void modelobj_debug_print(Modelobj* model) {
+void modelobj(debug_print)(Modelobj()* model) {
 	fprintf(stderr, "v:%zu u:%zu n:%zu f:%zu\n",
 		model->v_len,
 		model->u_len,
@@ -29,7 +29,7 @@ void modelobj_debug_print(Modelobj* model) {
 		model->f_len);
 }
 
-void modelobj_dump(FILE* fp, Modelobj* model) {
+void modelobj(dump)(FILE* fp, Modelobj()* model) {
 	size_t i;
 	for (i = 0; i < model->v_len; i += 1) {
 		chk(fprintf(fp, "v %f %f %f\n",
@@ -52,7 +52,7 @@ void modelobj_dump(FILE* fp, Modelobj* model) {
 		));
 	}
 	for (i = 0; i < model->f_len; i += 1) {
-		ModelobjFace *f = &model->fs[i];
+		Modelobj(Face) *f = &model->fs[i];
 		chk(fprintf(fp, "f"));
 		for (size_t j = 0; j < 3; j += 1) {
 			chk(fprintf(fp, " %d/%d/%d",

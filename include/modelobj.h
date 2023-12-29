@@ -2,6 +2,8 @@
 #define INCLUDEGUARD_MODELOBJ
 
 #include <cglm/cglm.h>
+#define CglmVec3 vec3
+#define CglmMat3 mat3
 
 typedef struct {
 	float color[4];
@@ -9,7 +11,7 @@ typedef struct {
 	int32_t uids[3];
 	int32_t nids[3];
 	int32_t texlayer;
-} ModelobjFace;
+} Modelobj(Face);
 
 typedef struct {
 	size_t v_len;
@@ -19,20 +21,20 @@ typedef struct {
 	size_t n_len;
 	float (*ns)[3];
 	size_t f_len;
-	ModelobjFace *fs;
-} Modelobj;
+	Modelobj(Face) *fs;
+} Modelobj();
 
-void modelobj_load(Modelobj* model, char* buf);
-void modelobj_load_file(Modelobj* model, char* path);
-void modelobj_deinit(Modelobj* model);
-void modelobj_dump(FILE* fp, Modelobj* model);
-void modelobj_debug_print(Modelobj* model);
+void modelobj(load)(Modelobj()* model, char* buf);
+void modelobj(load_file)(Modelobj()* model, char* path);
+void modelobj(deinit)(Modelobj()* model);
+void modelobj(dump)(FILE* fp, Modelobj()* model);
+void modelobj(debug_print)(Modelobj()* model);
 
-void modelobj_normal_build(Modelobj* model);
-void modelobj_normal_smooth(Modelobj* model);
+void modelobj(normal_build)(Modelobj()* model);
+void modelobj(normal_smooth)(Modelobj()* model);
 
-void modelobj_transform(Modelobj* model, mat3 t);
-void modelobj_scale(Modelobj* model, float k);
-void modelobj_translate(Modelobj* model, vec3 d);
+void modelobj(transform)(Modelobj()* model, CglmMat3 t);
+void modelobj(scale)(Modelobj()* model, float k);
+void modelobj(translate)(Modelobj()* model, CglmVec3 d);
 
 #endif
