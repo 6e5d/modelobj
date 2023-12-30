@@ -12,7 +12,7 @@ void modelobj(normal_build)(Modelobj()* model) {
 		float* v1 = model->vs[f->vids[0]];
 		float* v2 = model->vs[f->vids[1]];
 		float* v3 = model->vs[f->vids[2]];
-		CglmVec3 va, vb;
+		vec3 va, vb;
 		glm_vec3_sub(v2, v1, va);
 		glm_vec3_sub(v3, v1, vb);
 		glm_vec3_crossn(va, vb, model->ns[fid]);

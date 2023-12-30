@@ -1,9 +1,4 @@
-#ifndef INCLUDEGUARD_MODELOBJ
-#define INCLUDEGUARD_MODELOBJ
-
 #include <cglm/cglm.h>
-#define CglmVec3 vec3
-#define CglmMat3 mat3
 
 typedef struct {
 	float color[4];
@@ -33,8 +28,6 @@ void modelobj(debug_print)(Modelobj()* model);
 void modelobj(normal_build)(Modelobj()* model);
 void modelobj(normal_smooth)(Modelobj()* model);
 
-void modelobj(transform)(Modelobj()* model, CglmMat3 t);
+void modelobj(transform)(Modelobj()* model, mat3 t);
 void modelobj(scale)(Modelobj()* model, float k);
-void modelobj(translate)(Modelobj()* model, CglmVec3 d);
-
-#endif
+void modelobj(translate)(Modelobj()* model, vec3 d);
